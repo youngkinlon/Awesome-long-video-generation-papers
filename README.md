@@ -26,9 +26,13 @@ A problem-oriented list of papers, project pages, code, and personal notes on lo
 
 ## Inference-Based Methods
 
-| Family | Date | Paper | Project | Code | Problems Addressed | My Understanding |
-| --- | --- | --- | --- | --- | --- | --- |
-| LongLive | 2026-06-01 | [LongLive-RAG: A General Retrieval-Augmented Framework for Long Video Generation](https://arxiv.org/abs/2606.02553) | [Project](https://longlive-rag.github.io/) | [GitHub](https://github.com/qixinhu11/LongLive-RAG) | 🔴 Generation quality | — |
+| Family | Date | Paper | Project | Code | Main Inspiration | Problems Addressed | My Understanding |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| LongLive | 2026-06-01 | [LongLive-RAG: A General Retrieval-Augmented Framework for Long Video Generation](https://arxiv.org/abs/2606.02553) | [Project](https://longlive-rag.github.io/) | [GitHub](https://github.com/qixinhu11/LongLive-RAG) | LLM retrieval and memory | 🔴 Generation quality | Adaptive latent retrieval reduces drift. |
+| Deep Forcing | 2025-12-04 | [Deep Forcing: Training-Free Long Video Generation with Deep Sink and Participative Compression](https://arxiv.org/abs/2512.05081) | [Project](https://cvlab-kaist.github.io/DeepForcing/) | [GitHub](https://github.com/cvlab-kaist/DeepForcing) | LLM KV-cache management | 🔴 Generation quality · 🟠 Generation length | Deep sink and important-frame selection; multi-shot scalability is uncertain. |
+| LoL | 2026-01-23 | [LoL: Longer than Longer, Scaling Video Generation to Hour](https://arxiv.org/abs/2601.16914) | — | [GitHub](https://github.com/justincui03/LoL) | LLM positional encoding | 🔴 Generation quality · 🟠 Generation length | RoPE jitter prevents periodic collapse. |
+| Infinity-RoPE | 2025-11-25 | [Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout](https://arxiv.org/abs/2511.20649) | [Project](https://infinity-rope.github.io/) | [GitHub](https://github.com/yesiltepe-hidir/infinity-rope) | LLM RoPE and KV cache | 🟠 Generation length · 🟢 Interactivity · 🔵 Controllability | Relative RoPE, KV Flush, and RoPE Cut support long generation and scene switching. |
+| Pathwise TTC | 2026-02-05 | [Pathwise Test-Time Correction for Autoregressive Long Video Generation](https://arxiv.org/abs/2602.05871) | [Project](https://ttc-1231.github.io/) | [GitHub](https://github.com/xbxsxp9/Pathwise_TTC) | Diffusion sampling | 🔴 Generation quality | Corrects the diffusion path using the first frame; limited for major scene changes. |
 
 ## Notes
 
