@@ -4,33 +4,36 @@ A problem-oriented list of papers, project pages, code, and personal notes on lo
 
 ## Problems
 
-- Generation quality
-- Generation length
-- Generation speed
-- Interactivity
-- Editability
+- 🔴 Generation quality
+- 🟠 Generation length
+- 🟡 Generation speed
+- 🟢 Interactivity
+- 🔵 Controllability
 
 ## Training-Based Methods
 
 | Family | Date | Paper | Project | Code | Problems Addressed | My Understanding |
 | --- | --- | --- | --- | --- | --- | --- |
-| Self-Forcing | 2025-06-09 | [Self Forcing: Bridging the Train-Test Gap in Autoregressive Video Diffusion](https://arxiv.org/abs/2506.08009) | [Project](https://self-forcing.github.io/) | [GitHub](https://github.com/guandeh17/Self-Forcing) | Training-inference mismatch; generation speed; streaming generation | — |
-| Self-Forcing | 2025-10-02 | [Self-Forcing++: Towards Minute-Scale High-Quality Video Generation](https://arxiv.org/abs/2510.02283) | [Project](https://self-forcing-plus-plus.github.io/) | [GitHub](https://github.com/justincui03/Self-Forcing-Plus-Plus) · Full code not yet released | Long-horizon quality degradation; error accumulation; short-teacher/long-student mismatch | — |
-| Self-Forcing | 2025-11-03 | [MotionStream: Real-Time Video Generation with Interactive Motion Controls](https://arxiv.org/abs/2511.01266) | [Project](https://joonghyuk.com/motionstream-web/index.html) | [GitHub](https://github.com/alex4727/MotionStream) · Code not yet released | Interactivity; motion control; generation speed; long-horizon consistency | — |
-| LongLive | 2025-09-26 | [LongLive: Real-time Interactive Long Video Generation](https://arxiv.org/abs/2509.22622) | [Project](https://nvlabs.github.io/LongLive/) | [GitHub](https://github.com/NVlabs/LongLive/tree/v1.0) | Interactivity; training-inference mismatch; generation speed; long-range consistency | — |
-| LongLive | 2026-05-18 | [LongLive-2.0: An NVFP4 Parallel Infrastructure for Long Video Generation](https://arxiv.org/abs/2605.18739) | [Project](https://nvlabs.github.io/LongLive/LongLive2/) | [GitHub](https://github.com/NVlabs/LongLive) | Training cost; inference speed; memory usage; multi-shot generation | — |
-| Helios | 2026-03-04 | [Helios: Real Real-Time Long Video Generation Model](https://arxiv.org/abs/2603.04379) | [Project](https://pku-yuangroup.github.io/Helios-Page/) | [GitHub](https://github.com/PKU-YuanGroup/Helios) | Drift; generation speed; context cost; training efficiency | — |
+| Self-Forcing | 2025-06-09 | [Self Forcing: Bridging the Train-Test Gap in Autoregressive Video Diffusion](https://arxiv.org/abs/2506.08009) | [Project](https://self-forcing.github.io/) | [GitHub](https://github.com/guandeh17/Self-Forcing) | 🟠 Generation length | Pioneering work. |
+| Self-Forcing | 2025-10-02 | [Self-Forcing++: Towards Minute-Scale High-Quality Video Generation](https://arxiv.org/abs/2510.02283) | [Project](https://self-forcing-plus-plus.github.io/) | [GitHub](https://github.com/justincui03/Self-Forcing-Plus-Plus) · Full code not yet released | 🔴 Generation quality | Aligns training with inference; aligns teacher supervision with the final inference trajectory. |
+| Self-Forcing | 2025-11-03 | [MotionStream: Real-Time Video Generation with Interactive Motion Controls](https://arxiv.org/abs/2511.01266) | [Project](https://joonghyuk.com/motionstream-web/index.html) | [GitHub](https://github.com/alex4727/MotionStream) · Code not yet released | 🔵 Controllability · 🟡 Generation speed | Trains controllability into the teacher and manages the KV cache. |
+| LongLive | 2025-09-26 | [LongLive: Real-time Interactive Long Video Generation](https://arxiv.org/abs/2509.22622) | [Project](https://nvlabs.github.io/LongLive/) | [GitHub](https://github.com/NVlabs/LongLive/tree/v1.0) | 🟢 Interactivity · 🟡 Generation speed | Training-inference alignment; short window; frame sink; prompt switching. |
+| LongLive | 2026-05-18 | [LongLive-2.0: An NVFP4 Parallel Infrastructure for Long Video Generation](https://arxiv.org/abs/2605.18739) | [Project](https://nvlabs.github.io/LongLive/LongLive2/) | [GitHub](https://github.com/NVlabs/LongLive) | 🟡 Generation speed · 🟢 Interactivity | Directly trains the diffusion model as an AR model to preserve and unlock the teacher's capability; supports multi-shot generation. |
+| Rolling Forcing | 2025-09-29 | [Rolling Forcing: Autoregressive Long Video Diffusion in Real Time](https://arxiv.org/abs/2509.25161) | [Project](https://kunhao-liu.github.io/Rolling_Forcing_Webpage/) | [GitHub](https://github.com/TencentARC/RollingForcing) | 🔴 Generation quality | Aligns the teacher and student. |
+| Helios | 2026-03-04 | [Helios: Real Real-Time Long Video Generation Model](https://arxiv.org/abs/2603.04379) | [Project](https://pku-yuangroup.github.io/Helios-Page/) | [GitHub](https://github.com/PKU-YuanGroup/Helios) | 🔴 Generation quality · 🟡 Generation speed | Uses training to replace inference-time tricks. |
+| Causal Forcing | 2026-02-02 | [Causal Forcing: Autoregressive Diffusion Distillation Done Right for High-Quality Real-Time Interactive Video Generation](https://arxiv.org/abs/2602.02214) | [Project](https://thu-ml.github.io/CausalForcing.github.io/) | [GitHub](https://github.com/thu-ml/Causal-Forcing) | 🔴 Generation quality | Similar to LongLive-2.0: trains the AR model first to preserve the diffusion model's capability. |
+| Causal Forcing | 2026-05-14 | [Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation](https://arxiv.org/abs/2605.15141) | [Project](https://thu-ml.github.io/CausalForcing.github.io/) | [GitHub](https://github.com/thu-ml/Causal-Forcing) | 🟡 Generation speed | — |
 
 ## Inference-Based Methods
 
 | Family | Date | Paper | Project | Code | Problems Addressed | My Understanding |
 | --- | --- | --- | --- | --- | --- | --- |
-| LongLive | 2026-06-01 | [LongLive-RAG: A General Retrieval-Augmented Framework for Long Video Generation](https://arxiv.org/abs/2606.02553) | [Project](https://longlive-rag.github.io/) | [GitHub](https://github.com/qixinhu11/LongLive-RAG) | Identity drift; accumulated errors; background flicker; limited sliding-window context | — |
+| LongLive | 2026-06-01 | [LongLive-RAG: A General Retrieval-Augmented Framework for Long Video Generation](https://arxiv.org/abs/2606.02553) | [Project](https://longlive-rag.github.io/) | [GitHub](https://github.com/qixinhu11/LongLive-RAG) | 🔴 Generation quality | — |
 
 ## Notes
 
 - Dates refer to the first arXiv submission.
-- The **My Understanding** column is intentionally left blank for personal summaries and ideas.
+- The **My Understanding** column contains the maintainer's personal notes.
 
 ---
 
