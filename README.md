@@ -4,11 +4,11 @@ A problem-oriented list of papers, project pages, code, and personal notes on lo
 
 ## Problems
 
-- 🔴 Generation quality
-- 🟠 Generation length
-- 🟡 Generation speed
-- 🟢 Interactivity
-- 🔵 Controllability
+- 🔴 **Generation quality**: reduces drift, repetition, degradation, and temporal inconsistency.
+- 🟠 **Generation length**: extends generation beyond the model's original training horizon.
+- 🟡 **Generation speed**: reduces latency and computational cost toward real-time generation.
+- 🟢 **Interactivity**: supports multiple prompts, prompt switching, and multi-shot transitions during generation.
+- 🔵 **Controllability**: enables flexible control and editing of generated content, motion, camera, or actions.
 
 ## Training-Based Methods
 
