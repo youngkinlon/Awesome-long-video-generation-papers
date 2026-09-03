@@ -4,7 +4,7 @@ A problem-oriented list of papers, project pages, code, and personal notes on lo
 
 ## Website
 
-[Explore the interactive research map](https://long-video-generation-map.young33246946.chatgpt.site) to filter papers by method type and research problem, search the collection, and read the maintainer's notes. The website source is available in [`site/`](./site).
+[Explore the public interactive research map](https://youngkinlon.github.io/Awesome-long-video-generation-papers/) to filter papers by method type and research problem, search the collection, and read the maintainer's notes. The website source is available in [`site/`](./site).
 
 ## Problems
 
