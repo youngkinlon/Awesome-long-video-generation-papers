@@ -33,7 +33,7 @@ type Paper = {
   problems: Problem[];
   paper: string;
   project?: string;
-  code: string;
+  code?: string;
   codeStatus?: string;
   inspiration?: string;
   note?: string;
@@ -239,6 +239,46 @@ const papers: Paper[] = [
     code: 'https://github.com/xbxsxp9/Pathwise_TTC',
     inspiration: 'Diffusion sampling',
     note: 'Corrects the diffusion path using the first frame; limited for major scene changes.',
+  },
+  {
+    family: 'Future Forcing',
+    date: '2026-05-28',
+    title: 'Future Forcing: Future-aware Training-free KV Cache Policy for Autoregressive Video Generation',
+    type: 'inference',
+    problems: ['quality'],
+    paper: 'https://arxiv.org/abs/2605.30083',
+    inspiration: 'Future-aware KV-cache policy',
+    note: 'Pre-RoPE queries change little across frames. Future-aware KV-cache weighting is a useful idea, but it may become ineffective after interactive changes.',
+  },
+  {
+    family: 'PackCache',
+    date: '2026-01-07',
+    title: 'PackCache: A Training-Free Acceleration Method for Unified Autoregressive Video Generation via Compact KV-Cache',
+    type: 'inference',
+    problems: ['speed'],
+    paper: 'https://arxiv.org/abs/2601.04359',
+    inspiration: 'Compact KV-cache',
+  },
+  {
+    family: 'Dummy Forcing',
+    date: '2026-01-28',
+    title: 'Efficient Autoregressive Video Diffusion with Dummy Head',
+    type: 'inference',
+    problems: ['speed'],
+    paper: 'https://arxiv.org/abs/2601.20499',
+    project: 'https://csguoh.github.io/project/DummyForcing/',
+    code: 'https://github.com/csguoh/DummyForcing',
+    inspiration: 'Head-wise KV-cache pruning',
+  },
+  {
+    family: 'FlowCache',
+    date: '2026-02-11',
+    title: 'Flow Caching for Autoregressive Video Generation',
+    type: 'inference',
+    problems: ['speed'],
+    paper: 'https://arxiv.org/abs/2602.10825',
+    code: 'https://github.com/mikeallen39/FlowCache',
+    inspiration: 'Chunkwise diffusion caching',
   },
 ];
 
@@ -585,9 +625,11 @@ export default function Home() {
                         <BookOpen className="size-3.5" aria-hidden="true" /> Paper
                       </ExternalLink>
                       {entry.project && <ExternalLink href={entry.project}>Project</ExternalLink>}
-                      <ExternalLink href={entry.code}>
-                        <Code2 className="size-3.5" aria-hidden="true" /> Code
-                      </ExternalLink>
+                      {entry.code && (
+                        <ExternalLink href={entry.code}>
+                          <Code2 className="size-3.5" aria-hidden="true" /> Code
+                        </ExternalLink>
+                      )}
                     </div>
                     {entry.codeStatus && <span className="hidden text-[10px] text-slate-400 xl:block">{entry.codeStatus}</span>}
                   </CardFooter>
