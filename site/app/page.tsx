@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import {
   ArrowUpRight,
   BookOpen,
+  CalendarDays,
   Code2,
   Search,
   SlidersHorizontal,
@@ -289,6 +290,11 @@ export default function Home() {
 
   const hasFilters = query.length > 0 || methodType !== 'all' || problem !== null;
 
+  const chronologicalPapers = useMemo(
+    () => [...filteredPapers].sort((a, b) => a.date.localeCompare(b.date)),
+    [filteredPapers],
+  );
+
   const clearFilters = () => {
     setQuery('');
     setMethodType('all');
@@ -439,6 +445,75 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <section
+            aria-labelledby="timeline-title"
+            className="mt-8 border border-slate-200 bg-white px-5 py-5 sm:px-6 sm:py-6"
+          >
+            <div className="flex flex-col gap-3 border-b border-slate-100 pb-5 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="mb-2 flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-slate-500 uppercase">
+                  <CalendarDays className="size-4" aria-hidden="true" />
+                  Chronology
+                </p>
+                <h2 id="timeline-title" className="font-heading text-2xl font-semibold tracking-tight text-slate-950">
+                  Publication timeline
+                </h2>
+                <p className="mt-1 text-sm text-slate-500">First arXiv submission dates, from earliest to latest.</p>
+              </div>
+              <div className="flex items-center gap-4 text-[11px] font-semibold text-slate-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="size-2 rounded-full bg-violet-500" /> Training-based
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="size-2 rounded-full bg-cyan-500" /> Inference-based
+                </span>
+              </div>
+            </div>
+
+            {chronologicalPapers.length > 0 ? (
+              <div
+                className="timeline-scroll -mx-5 overflow-x-auto px-5 pt-5 pb-2 sm:-mx-6 sm:px-6"
+                tabIndex={0}
+                aria-label="Paper publication timeline. Scroll horizontally to see all papers."
+              >
+                <ol className="flex min-w-max">
+                  {chronologicalPapers.map((entry, index) => (
+                    <li key={entry.title} className="relative w-56 shrink-0 pr-7">
+                      <time dateTime={entry.date} className="font-mono text-[11px] font-semibold text-slate-500">
+                        {entry.date}
+                      </time>
+                      <div className="relative my-3 h-3" aria-hidden="true">
+                        {index < chronologicalPapers.length - 1 && (
+                          <span className="absolute top-1/2 left-1.5 h-px w-[calc(100%+1.25rem)] -translate-y-1/2 bg-slate-200" />
+                        )}
+                        <span
+                          className={`absolute top-1/2 left-0 size-3 -translate-y-1/2 rounded-full border-2 border-white ring-1 ring-slate-300 ${
+                            entry.type === 'training' ? 'bg-violet-500' : 'bg-cyan-500'
+                          }`}
+                        />
+                      </div>
+                      <a
+                        href={entry.paper}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+                      >
+                        <span className="block text-[10px] font-bold tracking-[0.12em] text-slate-400 uppercase">
+                          {entry.family}
+                        </span>
+                        <span className="mt-1 line-clamp-3 block font-heading text-[15px] leading-5 font-semibold text-slate-800 transition-colors group-hover:text-sky-700">
+                          {entry.title}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : (
+              <p className="py-8 text-sm text-slate-500">No papers match the current filters.</p>
+            )}
+          </section>
 
           <div className="mt-8 flex items-end justify-between gap-4">
             <div>
